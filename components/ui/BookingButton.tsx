@@ -11,12 +11,24 @@ type BookingButtonProps = {
 }
 
 const base =
-  'inline-flex items-center justify-center rounded-[10px] font-semibold whitespace-nowrap transition-colors duration-200'
+  [
+    'inline-flex items-center justify-center rounded-[10px] font-semibold whitespace-nowrap',
+    // именно `scale`, а не `transform`: утилиты scale-* в Tailwind 4 пишут
+  // в самостоятельное CSS-свойство scale, и по transform переход не поедет
+  'transition-[scale,background-color,border-color] duration-200 ease-out',
+    'focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-clay',
+    // `hover:` в Tailwind 4 уже завёрнут в @media (hover: hover) — на тач-устройствах
+    // не сработает. `motion-safe:` — это @media (prefers-reduced-motion: no-preference),
+    // поэтому при выключенной анимации трансформаций не будет вовсе.
+    'motion-safe:hover:scale-[1.04]',
+    'motion-safe:active:scale-[0.98] motion-safe:active:duration-100',
+  ].join(' ')
 
 const variants: Record<Variant, string> = {
-  primary: 'bg-clay text-white hover:bg-[#c46231]',
-  outline: 'border border-line bg-card/90 text-ink hover:border-moss/40 hover:bg-card',
-  moss: 'bg-moss text-white hover:bg-[#3c4a29]',
+  primary: 'bg-clay text-white hover:bg-[var(--clay-hover)]',
+  outline:
+    'border border-line bg-card/90 text-ink hover:border-moss/40 hover:bg-[var(--card-hover)]',
+  moss: 'bg-moss text-white hover:bg-[var(--moss-hover)]',
 }
 
 const sizes: Record<Size, string> = {

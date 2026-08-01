@@ -13,28 +13,31 @@ export default function Fleet() {
   return (
     <section id="fleet" className="py-16 lg:py-24">
       <div className="mx-auto w-full max-w-[1240px] px-5 sm:px-6 lg:px-8">
-        <div className="lg:grid lg:grid-cols-[minmax(240px,300px)_1fr] lg:items-start lg:gap-14">
+        {/* до xl текст стоит над карточками — иначе на 1024–1280 боковая
+            колонка съедает ширину и карточки становятся слишком узкими */}
+        <div className="xl:grid xl:grid-cols-[minmax(220px,250px)_1fr] xl:items-start xl:gap-10">
           <Reveal>
-            <div className="lg:sticky lg:top-28">
+            <div className="xl:sticky xl:top-28">
               <p className="eyebrow">Автопарк</p>
-              <h2 className="mt-4 text-[32px] leading-[1.12] font-semibold lg:text-[40px]">
+              <h2 className="mt-4 text-[32px] leading-[1.12] font-semibold lg:text-[40px] xl:text-[34px]">
                 Три Jimny.
                 <br />
                 Один правильный выбор.
               </h2>
-              <p className="text-muted mt-5 max-w-[380px] leading-relaxed">
+              <p className="text-muted mt-5 max-w-[420px] leading-relaxed">
                 Все автомобили свежие, ухоженные и полностью готовы к дорогам Камчатки.
               </p>
             </div>
           </Reveal>
 
-          {/* мобайл — горизонтальная карусель, десктоп — три колонки */}
-          <div className="-mx-5 mt-10 flex snap-x snap-mandatory gap-4 overflow-x-auto px-5 pb-2 sm:-mx-6 sm:px-6 lg:mx-0 lg:mt-0 lg:grid lg:grid-cols-3 lg:gap-6 lg:overflow-visible lg:px-0 lg:pb-0">
+          {/* до lg — горизонтальная карусель: в сетке карточки стали бы уже
+              240px и характеристики снова поехали бы в две строки */}
+          <div className="-mx-5 mt-10 flex snap-x snap-mandatory items-stretch gap-4 overflow-x-auto px-5 pb-2 sm:-mx-6 sm:px-6 lg:mx-0 lg:grid lg:grid-cols-3 lg:gap-5 lg:overflow-visible lg:px-0 lg:pb-0 xl:mt-0 xl:gap-6">
             {cars.map((car, index) => (
               <Reveal
                 key={car.id}
                 delay={index * 90}
-                className="w-[78vw] max-w-[320px] shrink-0 snap-start lg:w-auto lg:max-w-none"
+                className="w-[85vw] max-w-[320px] shrink-0 snap-start lg:w-auto lg:max-w-none"
               >
                 <CarCard car={car} />
               </Reveal>
@@ -63,21 +66,25 @@ function CarCard({ car }: { car: Car }) {
         </span>
       </div>
 
-      <div className="relative mx-4 aspect-[2/3] overflow-hidden rounded-[10px]">
+      {/* 2:3 — ровно пропорции исходников 1024×1536, кроп нулевой.
+          shrink-0, чтобы флекс-колонка карточки не сплющила кадр по высоте. */}
+      <div className="relative mx-4 aspect-[2/3] shrink-0 overflow-hidden rounded-[10px]">
         <Image
           src={car.image}
           alt={`${car.name} — Suzuki Jimny Sierra`}
           fill
-          sizes="(max-width: 1024px) 78vw, 260px"
+          sizes="(max-width: 1024px) 85vw, (max-width: 1280px) 33vw, 290px"
           className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
         />
       </div>
 
       <ul className="mt-4 grid grid-cols-2 gap-x-3 gap-y-3 px-4">
         {specs.map(({ Icon, label }) => (
-          <li key={label} className="flex items-center gap-2">
-            <Icon className="text-muted h-[18px] w-[18px]" />
-            <span className="text-[13px] leading-tight">{label}</span>
+          <li key={label} className="flex min-w-0 items-center gap-2 xl:gap-1.5">
+            <Icon className="text-muted h-[18px] w-[18px] xl:h-4 xl:w-4" />
+            <span className="text-[13px] leading-tight lg:whitespace-nowrap xl:text-[12px]">
+              {label}
+            </span>
           </li>
         ))}
       </ul>

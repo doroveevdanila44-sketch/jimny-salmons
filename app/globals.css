@@ -8,6 +8,11 @@
   --moss: #4a5a33;
   --clay: #d8703f;
   --line: #e2ded3;
+
+  /* фон кнопок при наведении — затемнение базового токена на 5% */
+  --clay-hover: color-mix(in srgb, var(--clay) 95%, #000);
+  --moss-hover: color-mix(in srgb, var(--moss) 95%, #000);
+  --card-hover: color-mix(in srgb, var(--card) 95%, #000);
 }
 
 @theme inline {
