@@ -13,9 +13,13 @@ export default function Fleet() {
   return (
     <section id="fleet" className="py-16 lg:py-24">
       <div className="mx-auto w-full max-w-[1240px] px-5 sm:px-6 lg:px-8">
-        {/* до xl текст стоит над карточками — иначе на 1024–1280 боковая
-            колонка съедает ширину и карточки становятся слишком узкими */}
-        <div className="xl:grid xl:grid-cols-[minmax(220px,250px)_1fr] xl:items-start xl:gap-10">
+        {/* 768–1023: общая сетка 2×2 — текст занимает первую ячейку, карточка №1
+            встаёт справа от него, №2 и №3 уходят во второй ряд.
+            1024–1280: текст снова над карточками, иначе боковая колонка съедает
+            ширину и характеристики переносятся. */}
+        {/* auto-rows-fr — чтобы оба ряда были равной высоты: иначе они
+            считаются независимо и карточки расходятся на пиксель */}
+        <div className="md:grid md:auto-rows-fr md:grid-cols-2 md:gap-5 lg:block xl:grid xl:auto-rows-auto xl:grid-cols-[minmax(220px,250px)_1fr] xl:items-start xl:gap-10">
           <Reveal>
             <div className="xl:sticky xl:top-28">
               <p className="eyebrow">Автопарк</p>
@@ -30,15 +34,11 @@ export default function Fleet() {
             </div>
           </Reveal>
 
-          {/* до lg — горизонтальная карусель: в сетке карточки стали бы уже
-              240px и характеристики снова поехали бы в две строки */}
-          <div className="-mx-5 mt-10 flex snap-x snap-mandatory items-stretch gap-4 overflow-x-auto px-5 pb-2 sm:-mx-6 sm:px-6 lg:mx-0 lg:grid lg:grid-cols-3 lg:gap-5 lg:overflow-visible lg:px-0 lg:pb-0 xl:mt-0 xl:gap-6">
+          {/* на md контейнер — display:contents, чтобы карточки стали ячейками
+              внешней сетки 2×2 и попали в один ряд с текстом */}
+          <div className="mt-10 grid grid-cols-1 items-stretch gap-4 md:contents lg:grid lg:grid-cols-3 lg:gap-5 xl:mt-0 xl:gap-6">
             {cars.map((car, index) => (
-              <Reveal
-                key={car.id}
-                delay={index * 90}
-                className="w-[85vw] max-w-[320px] shrink-0 snap-start lg:w-auto lg:max-w-none"
-              >
+              <Reveal key={car.id} delay={index * 90} className="h-full">
                 <CarCard car={car} />
               </Reveal>
             ))}
@@ -73,7 +73,7 @@ function CarCard({ car }: { car: Car }) {
           src={car.image}
           alt={`${car.name} — Suzuki Jimny Sierra`}
           fill
-          sizes="(max-width: 1024px) 85vw, (max-width: 1280px) 33vw, 290px"
+          sizes="(max-width: 768px) 92vw, (max-width: 1024px) 46vw, (max-width: 1280px) 33vw, 290px"
           className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
         />
       </div>
