@@ -30,12 +30,12 @@ export default function FooterCta() {
               <span className="block">и отправляйтесь в путь</span>
             </h2>
             {/* кнопка лежит на фото — белая рамка отделяет её от кадра.
-                Горизонтальные отступы срезаны на толщину рамки (28 → 26),
+                Горизонтальные отступы срезаны на толщину рамки (28 → 27),
                 чтобы габариты остались прежними: высоту рамка не меняет,
                 у всех элементов box-sizing: border-box. */}
             <BookingButton
               size="lg"
-              className="mt-7 border-2 border-white px-[26px] lg:mt-9"
+              className="mt-7 border border-white px-[27px] lg:mt-9"
             />
           </div>
         </div>
