@@ -13,7 +13,7 @@ export default function Routes() {
             <p className="eyebrow">Куда поехать на Jimny</p>
             <Link
               href="/routes"
-              className="text-ink hover:text-clay group inline-flex items-center gap-2 text-sm font-medium transition-colors"
+              className="text-ink hover:text-accent group inline-flex items-center gap-2 text-sm font-medium transition-colors"
             >
               Смотреть все маршруты
               <IconArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
@@ -48,7 +48,7 @@ export function RouteCard({ route, priority }: { route: Route; priority?: boolea
       </div>
       <div className="flex flex-1 flex-col px-5 py-5">
         <h3 className="text-[17px] leading-snug font-semibold">{route.title}</h3>
-        <p className="text-moss mt-1.5 text-[13px] font-medium">{route.distance}</p>
+        <p className="text-accent mt-1.5 text-[13px] font-medium">{route.distance}</p>
         <p className="text-muted mt-3 text-[14px] leading-relaxed">{route.description}</p>
       </div>
     </article>

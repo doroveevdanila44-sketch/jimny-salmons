@@ -61,7 +61,7 @@ function CarCard({ car }: { car: Car }) {
     <article className="bg-card border-line group flex h-full flex-col overflow-hidden rounded-[14px] border transition-shadow duration-300 hover:shadow-[0_16px_44px_-26px_rgba(31,33,25,0.5)]">
       <div className="flex items-center justify-between gap-3 px-4 pt-4 pb-3">
         <h3 className="text-[15px] font-semibold">{car.name}</h3>
-        <span className="text-moss bg-moss/10 rounded-full px-2.5 py-1 text-[11px] font-semibold">
+        <span className="text-accent bg-accent/10 rounded-full px-2.5 py-1 text-[11px] font-semibold">
           {car.status}
         </span>
       </div>

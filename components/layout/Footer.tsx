@@ -41,7 +41,7 @@ export default function Footer() {
           <FooterColumn title="Контакты">
             <a
               href={site.phoneHref}
-              className="hover:text-clay text-ink font-semibold transition-colors"
+              className="hover:text-accent text-ink font-semibold transition-colors"
             >
               {site.phone}
             </a>
@@ -54,7 +54,7 @@ export default function Footer() {
               <Link
                 key={link.href}
                 href={link.href}
-                className="text-muted hover:text-clay transition-colors"
+                className="text-muted hover:text-accent transition-colors"
               >
                 {link.label}
               </Link>
@@ -66,7 +66,7 @@ export default function Footer() {
               <a
                 key={link.label}
                 href={link.href}
-                className="text-muted hover:text-clay transition-colors"
+                className="text-muted hover:text-accent transition-colors"
               >
                 {link.label}
               </a>
@@ -75,7 +75,7 @@ export default function Footer() {
               href={site.yandexMaps}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-muted hover:text-clay transition-colors"
+              className="text-muted hover:text-accent transition-colors"
             >
               Отзывы на Яндекс Картах
             </a>
@@ -123,7 +123,7 @@ function SocialLink({
       target="_blank"
       rel="noopener noreferrer"
       aria-label={label}
-      className="border-line text-muted hover:text-clay hover:border-clay/40 flex h-9 w-9 items-center justify-center rounded-full border transition-colors"
+      className="border-line text-muted hover:text-accent hover:border-accent/40 flex h-9 w-9 items-center justify-center rounded-full border transition-colors"
     >
       {children}
     </a>

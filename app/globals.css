@@ -5,13 +5,18 @@
   --card: #fbfaf7;
   --ink: #1f2119;
   --muted: #6b6f63;
-  --moss: #4a5a33;
-  --clay: #d8703f;
   --line: #e2ded3;
 
+  /* Акцент — тот же зелёный, что был у кнопок «Выбрать» в карточках машин.
+     Белый текст на нём даёт контраст 7.5:1 (нужно ≥4.5:1). */
+  --accent: #4a5a33;
+
+  /* Фирменный оранжевый. Остался ровно в одном месте — «с Jimny»
+     в заголовке hero. Хранится отдельно, чтобы не потеряться. */
+  --brand-orange: #d8703f;
+
   /* фон кнопок при наведении — затемнение базового токена на 5% */
-  --clay-hover: color-mix(in srgb, var(--clay) 95%, #000);
-  --moss-hover: color-mix(in srgb, var(--moss) 95%, #000);
+  --accent-dark: color-mix(in srgb, var(--accent) 95%, #000);
   --card-hover: color-mix(in srgb, var(--card) 95%, #000);
 }
 
@@ -20,8 +25,8 @@
   --color-card: var(--card);
   --color-ink: var(--ink);
   --color-muted: var(--muted);
-  --color-moss: var(--moss);
-  --color-clay: var(--clay);
+  --color-accent: var(--accent);
+  --color-brand-orange: var(--brand-orange);
   --color-line: var(--line);
 
   --font-sans: var(--font-golos);
@@ -53,11 +58,11 @@
   }
 
   ::selection {
-    background-color: color-mix(in srgb, var(--clay) 26%, transparent);
+    background-color: color-mix(in srgb, var(--accent) 26%, transparent);
   }
 
   :focus-visible {
-    outline: 2px solid var(--moss);
+    outline: 2px solid var(--accent);
     outline-offset: 3px;
     border-radius: 4px;
   }
@@ -88,7 +93,7 @@
   font-weight: 600;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--moss);
+  color: var(--accent);
 }
 
 @media (prefers-reduced-motion: reduce) {

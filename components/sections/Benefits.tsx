@@ -26,7 +26,7 @@ export default function Benefits() {
                 key={title}
                 className="bg-card flex items-center gap-3.5 px-5 py-6 sm:gap-4 sm:px-7 lg:py-7"
               >
-                <Icon className="text-moss h-[26px] w-[26px]" />
+                <Icon className="text-accent h-[26px] w-[26px]" />
                 <div className="min-w-0">
                   <p className="text-[15px] leading-tight font-semibold sm:text-base">
                     {title}

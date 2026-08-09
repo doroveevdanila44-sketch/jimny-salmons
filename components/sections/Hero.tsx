@@ -31,7 +31,8 @@ export default function Hero() {
             <h1 className="text-[40px] leading-[1.06] font-bold min-[540px]:text-[52px] lg:text-[64px] xl:text-[70px]">
               <span className="block">Твоя Камчатка</span>
               <span className="block">начинается</span>
-              <span className="lg:text-clay block text-white">с Jimny</span>
+              {/* единственный оранжевый на сайте — держится на --brand-orange */}
+              <span className="lg:text-brand-orange block text-white">с Jimny</span>
             </h1>
 
             <p className="text-ink lg:text-muted mt-5 max-w-[420px] text-[15px] leading-relaxed lg:mt-6 lg:ml-auto lg:text-base">

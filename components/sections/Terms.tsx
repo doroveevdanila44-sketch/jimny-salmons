@@ -47,14 +47,14 @@ export default function Terms() {
           {tiles.map(({ Icon, title, items }, index) => (
             <Reveal key={title} delay={index * 80} className="h-full">
               <article className="bg-card border-line flex h-full flex-col rounded-[14px] border px-6 py-7">
-                <Icon className="text-moss" />
+                <Icon className="text-accent" />
                 <h3 className="mt-5 text-[17px] font-semibold">{title}</h3>
                 <ul className="text-muted mt-3.5 flex flex-col gap-2.5 text-[14px] leading-relaxed">
                   {items.map((item) => (
                     <li key={item} className="flex gap-2.5">
                       <span
                         aria-hidden="true"
-                        className="bg-clay/70 mt-[9px] h-[3px] w-[3px] shrink-0 rounded-full"
+                        className="bg-accent/70 mt-[9px] h-[3px] w-[3px] shrink-0 rounded-full"
                       />
                       {item}
                     </li>
