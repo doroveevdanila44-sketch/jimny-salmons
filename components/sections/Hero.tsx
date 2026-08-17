@@ -28,11 +28,19 @@ export default function Hero() {
       <div className="order-1 bg-gradient-to-b from-[#6A94C3] to-[#739AC4] px-5 pt-[92px] pb-9 sm:px-6 lg:relative lg:z-10 lg:bg-none lg:px-8 lg:pt-0 lg:pb-0">
         <div className="mx-auto flex w-full max-w-[1240px] lg:min-h-[86vh] lg:items-center lg:justify-end lg:pt-20">
           <div className="lg:max-w-[560px] lg:text-right">
+            {/* строки разделены <br />, а не блоками: пробелы перед переносами
+                нужны, чтобы textContent читался словами, а не «Камчатканачинается» */}
             <h1 className="text-[40px] leading-[1.06] font-bold min-[540px]:text-[52px] lg:text-[64px] xl:text-[70px]">
-              <span className="block">Твоя Камчатка</span>
-              <span className="block">начинается</span>
-              {/* единственный оранжевый на сайте — держится на --brand-orange */}
-              <span className="lg:text-brand-orange block text-white">с Jimny</span>
+              Твоя Камчатка{' '}
+              <br />
+              начинается{' '}
+              <br />
+              {/* единственный оранжевый на сайте — держится на --brand-orange.
+                  До lg заголовок лежит на голубом градиенте, где оранжевый почти
+                  сливается по светлоте, — поэтому там тень. На фото она не нужна. */}
+              <span className="text-brand-orange [text-shadow:0_1px_12px_rgba(0,0,0,0.35)] lg:[text-shadow:none]">
+                с Jimny
+              </span>
             </h1>
 
             <p className="text-ink lg:text-muted mt-5 max-w-[420px] text-[15px] leading-relaxed lg:mt-6 lg:ml-auto lg:text-base">

@@ -24,7 +24,7 @@ export default function Fleet() {
             <div className="xl:sticky xl:top-28">
               <p className="eyebrow">Автопарк</p>
               <h2 className="mt-4 text-[32px] leading-[1.12] font-semibold lg:text-[40px] xl:text-[34px]">
-                Три Jimny.
+                Три Jimny.{' '}
                 <br />
                 Один правильный выбор.
               </h2>

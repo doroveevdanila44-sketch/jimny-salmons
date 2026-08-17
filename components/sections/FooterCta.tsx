@@ -24,10 +24,13 @@ export default function FooterCta() {
       <div className="order-1 bg-gradient-to-b from-[#7C7B7F] to-[#85807F] px-5 py-12 sm:px-6 lg:relative lg:z-10 lg:bg-none lg:px-8 lg:py-0">
         <div className="mx-auto flex w-full max-w-[1240px] lg:min-h-[76vh] lg:items-center">
           <div className="lg:max-w-[560px]">
+            {/* см. Hero: строки через <br /> с пробелами, чтобы текст не слипался */}
             <h2 className="text-[32px] leading-[1.1] font-bold text-white min-[540px]:text-[40px] lg:text-[52px]">
-              <span className="block">Камчатка ждёт.</span>
-              <span className="block">Выберите даты</span>
-              <span className="block">и отправляйтесь в путь</span>
+              Камчатка ждёт.{' '}
+              <br />
+              Выберите даты{' '}
+              <br />
+              и отправляйтесь в путь
             </h2>
             {/* кнопка лежит на фото — белая рамка отделяет её от кадра.
                 Горизонтальные отступы срезаны на толщину рамки (28 → 27.5),

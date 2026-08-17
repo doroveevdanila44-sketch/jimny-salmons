@@ -3,6 +3,20 @@ import { IconArrowRight, IconQuote } from '@/components/ui/Icons'
 import { reviews } from '@/data/reviews'
 import { site } from '@/data/site'
 
+const months: Record<string, string> = {
+  январь: '01', февраль: '02', март: '03', апрель: '04',
+  май: '05', июнь: '06', июль: '07', август: '08',
+  сентябрь: '09', октябрь: '10', ноябрь: '11', декабрь: '12',
+}
+
+// «июль 2025» → «2025-07» для атрибута datetime. Данные в data/ не трогаем:
+// машиночитаемая форма — дело разметки, а не содержимого.
+function machineDate(date: string): string | undefined {
+  const [month, year] = date.split(' ')
+  const mm = months[month?.toLowerCase()]
+  return mm && year ? `${year}-${mm}` : undefined
+}
+
 export default function Reviews() {
   return (
     <section id="reviews" className="pb-16 lg:pb-24">
@@ -20,15 +34,24 @@ export default function Reviews() {
                   «{review.excerpt}»
                 </blockquote>
                 <figcaption className="border-line mt-6 flex items-center gap-3 border-t pt-5">
+                  {/* буква декоративная: aria-hidden убирает её у скринридеров,
+                      select-none — из выделения, иначе копируется «ААлександр» */}
                   <span
                     aria-hidden="true"
-                    className="bg-accent/10 text-accent flex h-9 w-9 shrink-0 items-center justify-center rounded-full text-sm font-semibold"
+                    className="bg-accent/10 text-accent flex h-9 w-9 shrink-0 items-center justify-center rounded-full text-sm font-semibold select-none"
                   >
                     {review.author.charAt(0)}
                   </span>
                   <span>
-                    <span className="block text-[14px] font-semibold">{review.author}</span>
-                    <span className="text-muted block text-[13px]">{review.date}</span>
+                    <cite className="block text-[14px] font-semibold not-italic">
+                      {review.author}
+                    </cite>
+                    <time
+                      dateTime={machineDate(review.date)}
+                      className="text-muted block text-[13px]"
+                    >
+                      {review.date}
+                    </time>
                   </span>
                 </figcaption>
               </figure>
