@@ -96,6 +96,38 @@
   color: var(--accent);
 }
 
+/* Увеличение при наведении. Общий паттерн для всех секций, чтобы масштабы
+   и условия не разъезжались.
+   `pointer: fine` отсекает тач: там hover залипает после тапа.
+   Срабатывает и от своего :hover, и от родителя с классом `group` —
+   это нужно там, где двигается содержимое, а подложка стоит на месте. */
+@utility hover-zoom-item {
+  @media (prefers-reduced-motion: no-preference) and (hover: hover) and (pointer: fine) {
+    transform-origin: center;
+    transition: transform 200ms ease-out;
+    will-change: transform;
+
+    &:hover,
+    .group:hover & {
+      transform: scale(1.06);
+    }
+  }
+}
+
+/* то же самое для целых карточек и плашек — масштаб меньше */
+@utility hover-zoom-card {
+  @media (prefers-reduced-motion: no-preference) and (hover: hover) and (pointer: fine) {
+    transform-origin: center;
+    transition: transform 200ms ease-out;
+    will-change: transform;
+
+    &:hover,
+    .group:hover & {
+      transform: scale(1.02);
+    }
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;

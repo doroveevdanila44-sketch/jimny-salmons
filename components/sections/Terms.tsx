@@ -46,7 +46,7 @@ export default function Terms() {
         <div className="mt-9 grid gap-4 sm:grid-cols-2 lg:mt-11 lg:grid-cols-4 lg:gap-5">
           {tiles.map(({ Icon, title, items }, index) => (
             <Reveal key={title} delay={index * 80} className="h-full">
-              <article className="bg-card border-line flex h-full flex-col rounded-[14px] border px-6 py-7">
+              <article className="bg-card border-line hover-zoom-card flex h-full flex-col rounded-[14px] border px-6 py-7">
                 <Icon className="text-accent" />
                 <h3 className="mt-5 text-[17px] font-semibold">{title}</h3>
                 <ul className="text-muted mt-3.5 flex flex-col gap-2.5 text-[14px] leading-relaxed">

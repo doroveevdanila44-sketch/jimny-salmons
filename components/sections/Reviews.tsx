@@ -28,7 +28,7 @@ export default function Reviews() {
         <div className="mt-8 grid gap-4 md:grid-cols-3 lg:mt-10 lg:gap-6">
           {reviews.map((review, index) => (
             <Reveal key={review.author} delay={index * 80} className="h-full">
-              <figure className="bg-card border-line flex h-full flex-col rounded-[14px] border px-6 py-7">
+              <figure className="bg-card border-line hover-zoom-card flex h-full flex-col rounded-[14px] border px-6 py-7">
                 <IconQuote className="text-accent/35 h-7 w-7" />
                 <blockquote className="mt-4 flex-1 text-[15px] leading-relaxed">
                   «{review.excerpt}»

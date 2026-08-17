@@ -49,7 +49,10 @@ export default function Equipment() {
                   В узкой колонке от xl переходим на три. */}
               <ul className="mt-8 grid grid-cols-3 gap-x-4 gap-y-6 sm:grid-cols-5 lg:mt-9 xl:mt-8 xl:grid-cols-3 xl:gap-y-7">
                 {included.map(({ Icon, label }) => (
-                  <li key={label} className="flex flex-col items-center gap-2.5 text-center">
+                  <li
+                    key={label}
+                    className="hover-zoom-item flex flex-col items-center gap-2.5 text-center"
+                  >
                     <Icon className="text-accent" />
                     <span className="text-[12px] leading-snug">{label}</span>
                   </li>
@@ -58,7 +61,9 @@ export default function Equipment() {
 
               {/* от xl подпись уходит на свою строку: в узкой колонке три пункта
                   в один ряд с подписью не помещаются и рассыпаются по строкам */}
-              <div className="border-line bg-paper/70 mt-8 flex flex-col gap-3 rounded-[12px] border px-5 py-4 sm:flex-row sm:items-center sm:gap-4 lg:mt-9 xl:mt-8 xl:flex-col xl:items-start xl:gap-3">
+              {/* увеличивается плашка целиком — пункты внутри отдельно
+                  не анимируются, иначе вышло бы двойное увеличение */}
+              <div className="border-line bg-paper/70 hover-zoom-card mt-8 flex flex-col gap-3 rounded-[12px] border px-5 py-4 sm:flex-row sm:items-center sm:gap-4 lg:mt-9 xl:mt-8 xl:flex-col xl:items-start xl:gap-3">
                 <p className="text-muted flex shrink-0 items-center gap-2.5 text-[13px]">
                   <IconGift className="text-accent h-5 w-5" />
                   По запросу бесплатно:
